@@ -19,7 +19,8 @@ internal fun App() = AppTheme {
         //HelloWorldApp()
         //WelcomeApp()
         //ResourceApp()
-        ContactApp()
+        //ContactApp()
+        MessagesListApp()
         /*Column(modifier = Modifier.background(Color.Cyan).fillMaxWidth()) {
             Row() {
                 Text("Hello")
