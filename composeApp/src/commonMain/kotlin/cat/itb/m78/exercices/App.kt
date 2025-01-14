@@ -18,7 +18,8 @@ internal fun App() = AppTheme {
         //Text("Your app goes here!", Modifier.align(Alignment.Center), color = Color.Blue, fontSize = 50.sp)
         //HelloWorldApp()
         //WelcomeApp()
-        ResourceApp()
+        //ResourceApp()
+        ContactApp()
         /*Column(modifier = Modifier.background(Color.Cyan).fillMaxWidth()) {
             Row() {
                 Text("Hello")
