@@ -50,20 +50,20 @@ val messages = List(100){
 @Composable
 fun MessagesListApp() {
     Scaffold(
-            topBar = {
-                TopAppBar(
-                    title = { Text("App Bar Title")},
-                    navigationIcon = {Icon(Icons.AutoMirrored.Filled.ArrowBack, "back")}) },
-    floatingActionButton = {
-        FloatingActionButton(onClick = {}){
-            Icon(Icons.Default.Add, "add")
+        topBar = {
+            TopAppBar(
+                title = { Text("App Bar Title")},
+                navigationIcon = {Icon(Icons.AutoMirrored.Filled.ArrowBack, "back")}) },
+        floatingActionButton = {
+            FloatingActionButton(onClick = {}){
+                Icon(Icons.Default.Add, "add")
+            }
         }
-    }
     ) { paddingValues ->
         Column (Modifier.padding(paddingValues)){
             LazyColumn {
-                items(messages) {index ->
-                    Column(modifier = Modifier.width(500.dp).clip(RoundedCornerShape(10.dp)).background(Color.LightGray).padding(15.dp)) {
+                items(messages) { index ->
+                    Column(modifier = Modifier.clip(RoundedCornerShape(10.dp)).background(Color.LightGray).padding(15.dp)) {
                         Text(index.author)
                         Text(index.body)
                     }
