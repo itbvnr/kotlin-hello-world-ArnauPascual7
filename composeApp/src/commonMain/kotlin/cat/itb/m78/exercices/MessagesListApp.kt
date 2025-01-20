@@ -49,7 +49,7 @@ val messages = List(100){
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MessagesListApp() {
-    Scaffold(
+    Scaffold (
         topBar = {
             TopAppBar(
                 title = { Text("App Bar Title")},
@@ -62,14 +62,25 @@ fun MessagesListApp() {
     ) { paddingValues ->
         Column (Modifier.padding(paddingValues)){
             LazyColumn {
-                items(messages) { index ->
+                items(messages) { message ->
                     Column(modifier = Modifier.clip(RoundedCornerShape(10.dp)).background(Color.LightGray).padding(15.dp)) {
-                        Text(index.author)
-                        Text(index.body)
+                        Text(message.author)
+                        Text(message.body)
                     }
                     Spacer(Modifier.height(10.dp))
                 }
             }
         }
     }
+    /*LazyColumn {
+        messages.forEach { message ->
+            item {
+                Column(modifier = Modifier.clip(RoundedCornerShape(10.dp)).background(Color.LightGray).padding(15.dp)) {
+                    Text(message.author)
+                    Text(message.body)
+                }
+                Spacer(Modifier.height(10.dp))
+            }
+        }
+    }*/
 }
