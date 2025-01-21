@@ -20,8 +20,9 @@ internal fun App() = AppTheme {
         //WelcomeApp()
         //ResourceApp()
         //ContactApp()
-        MessagesListApp()
+        //MessagesListApp()
         //GoodMorningApp()
+        SayHelloScreenApp()
         /*Column(modifier = Modifier.background(Color.Cyan).fillMaxWidth()) {
             Row() {
                 Text("Hello")
