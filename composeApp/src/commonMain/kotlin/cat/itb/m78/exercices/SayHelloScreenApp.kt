@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.*
 fun SayHelloScreenApp() {
     var show by remember { mutableStateOf(false) }
     var text by remember { mutableStateOf("") }
-    Column {
+    Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
         TextField(text,
             label = { Text("Name") },
             onValueChange = { text = it },
@@ -26,7 +26,7 @@ fun SayHelloScreenApp() {
         AlertDialog(
             onDismissRequest = { show = false },
             confirmButton = {},
-            title = {Text("HELLO " + text)}
+            title = {Text("HELLO $text")}
         )
     }
 }
