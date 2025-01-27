@@ -15,7 +15,7 @@ fun SayHelloScreenApp() {
         TextField(text,
             label = { Text("Name") },
             onValueChange = { text = it },
-            shape = RoundedCornerShape(10.dp),)
+            shape = RoundedCornerShape(10.dp))
         Button(onClick = {
             show = true
         }) {
