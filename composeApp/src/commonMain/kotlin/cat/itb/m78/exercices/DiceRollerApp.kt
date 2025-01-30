@@ -14,8 +14,9 @@ import kotlin.random.*
 
 @Composable
 fun DiceRollerApp() {
-    var leftDice by remember { mutableStateOf(Res.drawable.empty_dice) }
-    var rightDice by remember { mutableStateOf(Res.drawable.empty_dice) }
+    var leftDice by remember { mutableStateOf(0) }
+    var rightDice by remember { mutableStateOf(0) }
+    val dices = listOf(Res.drawable.empty_dice, Res.drawable.dice_1, Res.drawable.dice_2, Res.drawable.dice_3, Res.drawable.dice_4, Res.drawable.dice_5, Res.drawable.dice_6)
     val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
     Box {
@@ -35,25 +36,13 @@ fun DiceRollerApp() {
                     modifier = Modifier.size(200.dp)
                 )
                 Button(onClick = {
-                    val leftRandom = Random.nextInt(1, 7)
-                    if (leftRandom == 1) { leftDice = Res.drawable.dice_1 }
-                    else if (leftRandom == 2) { leftDice = Res.drawable.dice_2 }
-                    else if (leftRandom == 3) { leftDice = Res.drawable.dice_3 }
-                    else if (leftRandom == 4) { leftDice = Res.drawable.dice_4 }
-                    else if (leftRandom == 5) { leftDice = Res.drawable.dice_5 }
-                    else if (leftRandom == 6) { leftDice = Res.drawable.dice_6 }
+                    leftDice = Random.nextInt(1, 7)
+                    rightDice = Random.nextInt(1, 7)
 
-                    val rightRandom = Random.nextInt(1, 7)
-                    if (rightRandom == 1) { rightDice = Res.drawable.dice_1 }
-                    else if (rightRandom == 2) { rightDice = Res.drawable.dice_2 }
-                    else if (rightRandom == 3) { rightDice = Res.drawable.dice_3 }
-                    else if (rightRandom == 4) { rightDice = Res.drawable.dice_4 }
-                    else if (rightRandom == 5) { rightDice = Res.drawable.dice_5 }
-                    else if (rightRandom == 6) { rightDice = Res.drawable.dice_6 }
-
-                    if (leftRandom == 6 && rightRandom == 6) {
+                    if (leftDice == 6 && rightDice == 6) {
                         scope.launch {
-                            snackbarHostState.showSnackbar("JACKPOT!")
+                            snackbarHostState.showSnackbar("JACKPOT!",
+                                withDismissAction = true)
                         }
                     }
                 },
@@ -61,11 +50,11 @@ fun DiceRollerApp() {
                     Text("Roll the dice")
                 }
                 Row {
-                    Image(painter = painterResource(leftDice),
+                    Image(painter = painterResource(dices[leftDice]),
                         contentDescription = null,
                         modifier = Modifier.size(200.dp)
                     )
-                    Image(painter = painterResource(rightDice),
+                    Image(painter = painterResource(dices[rightDice]),
                         contentDescription = null,
                         modifier = Modifier.size(200.dp)
                     )
