@@ -24,8 +24,10 @@ internal fun App() = AppTheme {
         //GoodMorningApp()
         //SayHelloScreenApp()
         //SecretNumberApp()
-        DiceRollerApp()
+        //DiceRollerApp()
         //CounterApp()
+        CounterNavScreen()
+        //ManualNav()
         /*Column(modifier = Modifier.background(Color.Cyan).fillMaxWidth()) {
             Row() {
                 Text("Hello")
