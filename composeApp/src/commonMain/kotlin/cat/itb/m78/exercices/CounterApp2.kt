@@ -70,7 +70,7 @@ fun CounterScreen2(/*viewModel: CounterViewModel,*/ navScreen1: () -> Unit) {
     }
 }
 
-object Destination {
+/*object Destination {
     @Serializable
     data object Screen1
     @Serializable
@@ -85,4 +85,4 @@ fun CounterNavScreen() {
         composable<Destination.Screen1> { CounterApp2/*(viewModel)*/ { navController.navigate(Destination.Screen2) } }
         composable<Destination.Screen2> { CounterScreen2/*(viewModel)*/ { navController.navigate(Destination.Screen1) } }
     }
-}
+}*/

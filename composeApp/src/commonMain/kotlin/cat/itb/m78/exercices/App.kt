@@ -26,8 +26,9 @@ internal fun App() = AppTheme {
         //SecretNumberApp()
         //DiceRollerApp()
         //CounterApp()
-        CounterNavScreen()
+        //CounterNavScreen()
         //ManualNav()
+        ExamenNavScreen()
         /*Column(modifier = Modifier.background(Color.Cyan).fillMaxWidth()) {
             Row() {
                 Text("Hello")
