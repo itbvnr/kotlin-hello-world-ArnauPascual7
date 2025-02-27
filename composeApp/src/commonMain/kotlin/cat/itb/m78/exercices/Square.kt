@@ -4,8 +4,6 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.*
 import kotlinx.serialization.json.Json
 
-data class Jokes(val id: Int, val type: String, val setup: String, val punchline: String)
-
 @Serializable
 data class Rectangle(val height: Double, val width: Double)
 

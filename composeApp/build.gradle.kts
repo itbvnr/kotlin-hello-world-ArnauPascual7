@@ -55,6 +55,10 @@ kotlin {
             implementation(libs.androidx.navigation.composee)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.datetime)
+            implementation("io.ktor:ktor-serialization-kotlinx-json:3.1.0")
+            implementation("io.ktor:ktor-client-core:3.1.0")
+            implementation("io.ktor:ktor-client-cio:3.1.0")
+            implementation("io.ktor:ktor-client-content-negotiation:3.1.0")
         }
 
         commonTest.dependencies {

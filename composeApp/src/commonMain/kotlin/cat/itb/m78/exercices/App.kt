@@ -29,6 +29,8 @@ internal fun App() = AppTheme {
         //CounterNavScreen()
         //ManualNav()
         ExamenNavScreen()
+        //JokesScreen()
+        //CurrentBcnTreesApp()
         /*Column(modifier = Modifier.background(Color.Cyan).fillMaxWidth()) {
             Row() {
                 Text("Hello")
