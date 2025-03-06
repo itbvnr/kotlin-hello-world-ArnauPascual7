@@ -1,16 +1,12 @@
 package cat.itb.m78.exercices
 
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.*
-import androidx.compose.ui.unit.*
+import cat.itb.m78.exercices.part2.*
+import cat.itb.m78.exercices.part1.*
+import cat.itb.m78.exercices.part1.examen.*
 import cat.itb.m78.exercices.theme.AppTheme
-import org.jetbrains.compose.reload.DevelopmentEntryPoint
 
 @Composable
 internal fun App() = AppTheme {
@@ -28,9 +24,11 @@ internal fun App() = AppTheme {
         //CounterApp()
         //CounterNavScreen()
         //ManualNav()
-        ExamenNavScreen()
+        //ExamenNavScreen()
         //JokesScreen()
         //CurrentBcnTreesApp()
+        //CounterViewApp()
+        RememberMyNameApp()
         /*Column(modifier = Modifier.background(Color.Cyan).fillMaxWidth()) {
             Row() {
                 Text("Hello")

@@ -1,11 +1,9 @@
-package cat.itb.m78.exercices
+package cat.itb.m78.exercices.part1.examen
 
 import kotlinx.serialization.Serializable
 import androidx.compose.runtime.*
-import cat.itb.m78.exercices.theme.*
 import androidx.navigation.compose.*
 import androidx.navigation.*
-import kotlinx.serialization.*
 
 object Destination {
     @Serializable

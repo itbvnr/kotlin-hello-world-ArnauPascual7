@@ -1,14 +1,10 @@
-package cat.itb.m78.exercices
+package cat.itb.m78.exercices.part1
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.compose.*
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import kotlinx.serialization.Serializable
 
 class CounterViewModel: ViewModel() {
     var local by mutableStateOf(0)

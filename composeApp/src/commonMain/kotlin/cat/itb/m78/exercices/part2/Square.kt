@@ -1,7 +1,6 @@
-package cat.itb.m78.exercices
+package cat.itb.m78.exercices.part2
 
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.*
 import kotlinx.serialization.json.Json
 
 @Serializable

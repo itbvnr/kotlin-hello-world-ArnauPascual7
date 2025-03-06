@@ -1,8 +1,5 @@
-package cat.itb.m78.exercices
+package cat.itb.m78.exercices.part1
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel

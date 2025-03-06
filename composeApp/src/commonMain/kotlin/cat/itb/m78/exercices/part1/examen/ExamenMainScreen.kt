@@ -1,4 +1,4 @@
-package cat.itb.m78.exercices
+package cat.itb.m78.exercices.part1.examen
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

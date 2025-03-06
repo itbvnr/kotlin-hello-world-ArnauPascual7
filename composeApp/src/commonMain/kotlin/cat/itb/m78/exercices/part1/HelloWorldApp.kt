@@ -1,4 +1,4 @@
-package cat.itb.m78.exercices
+package cat.itb.m78.exercices.part1
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
