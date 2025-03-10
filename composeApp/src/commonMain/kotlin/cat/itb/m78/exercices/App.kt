@@ -28,7 +28,8 @@ internal fun App() = AppTheme {
         //JokesScreen()
         //CurrentBcnTreesApp()
         //CounterViewApp()
-        RememberMyNameApp()
+        //RememberMyNameApp()
+        CountriesApp()
         /*Column(modifier = Modifier.background(Color.Cyan).fillMaxWidth()) {
             Row() {
                 Text("Hello")

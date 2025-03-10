@@ -61,6 +61,8 @@ kotlin {
             implementation("io.ktor:ktor-client-content-negotiation:3.1.0")
             implementation("com.russhwolf:multiplatform-settings-no-arg:1.3.0")
             implementation("com.russhwolf:multiplatform-settings-serialization:1.3.0")
+            implementation("io.coil-kt.coil3:coil-compose:3.1.0")
+            implementation("io.coil-kt.coil3:coil-network-ktor3:3.1.0")
         }
 
         commonTest.dependencies {
