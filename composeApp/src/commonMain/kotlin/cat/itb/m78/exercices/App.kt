@@ -29,7 +29,8 @@ internal fun App() = AppTheme {
         //CurrentBcnTreesApp()
         //CounterViewApp()
         //RememberMyNameApp()
-        CountriesApp()
+        //CountriesApp()
+        EstatEmbassamentsApp()
         /*Column(modifier = Modifier.background(Color.Cyan).fillMaxWidth()) {
             Row() {
                 Text("Hello")
