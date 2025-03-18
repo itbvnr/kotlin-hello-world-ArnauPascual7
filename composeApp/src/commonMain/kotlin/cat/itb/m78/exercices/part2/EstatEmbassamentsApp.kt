@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Shapes
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -29,14 +28,13 @@ import io.ktor.client.call.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
 import io.ktor.serialization.kotlinx.json.*
-import io.ktor.util.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
 @Serializable
-data class Estat(
+data class Embassament(
     val dia: String,
     val estaci: String,
     val nivell_absolut: String,
@@ -44,16 +42,16 @@ data class Estat(
     val volum_embassat: String
 )
 
-class EstatViewModel : ViewModel() {
-    var estats by mutableStateOf<List<Estat>?>(null)
+class EmbassamentsViewModel : ViewModel() {
+    var embassaments by mutableStateOf<List<Embassament>?>(null)
     init {
         viewModelScope.launch(Dispatchers.Default) {
-            estats = EstatApi.estats()
+            embassaments = EmbassamentsApi.listEmbassaments()
         }
     }
 }
 
-object EstatApi {
+object EmbassamentsApi {
     val url = "https://analisi.transparenciacatalunya.cat/resource/gn9e-3qhr.json"
     val client = HttpClient {
         install(ContentNegotiation) {
@@ -62,40 +60,40 @@ object EstatApi {
             })
         }
     }
-    suspend fun estats() = client.get(url).body<List<Estat>>()
+    suspend fun listEmbassaments() = client.get(url).body<List<Embassament>>()
 }
 
 @Composable
 fun EstatEmbassamentsApp() {
-    EstatNavigation()
+    EmbassamentsNavigation()
 }
 
 @Composable
-fun EstatScreen1(navScreen2: (List<String>)-> Unit) {
-    val viewModel = viewModel { EstatViewModel() }
-    val estats = viewModel.estats
-    val settings: Settings = Settings()
-    var favEstat: String? = settings.getStringOrNull("key")
+fun EmbassamentsScreen1(navScreen2: (List<String>)-> Unit) {
+    val viewModel = viewModel { EmbassamentsViewModel() }
+    val embassaments = viewModel.embassaments
+    val settings = Settings()
+    val favEmbassaments = settings.getStringOrNull("key")
     Column(Modifier.fillMaxSize().padding(25.dp)) {
-        if (estats != null) {
-            Text("Estat Preferit: $favEstat", fontSize = 20.sp)
+        if (embassaments != null) {
+            Text("Embassament Preferit: $favEmbassaments", fontSize = 20.sp)
             Spacer(Modifier.height(20.dp))
             LazyColumn {
-                estats.forEach { estat ->
+                embassaments.forEach { item ->
                     item {
                         Row {
                             Button(onClick = {
-                                settings["key"] = estat.estaci
+                                settings["key"] = item.estaci
                                 navScreen2(listOf(
-                                    estat.dia,
-                                    estat.estaci,
-                                    estat.nivell_absolut,
-                                    estat.percentatge_volum_embassat,
-                                    estat.volum_embassat
+                                    item.dia,
+                                    item.estaci,
+                                    item.nivell_absolut,
+                                    item.percentatge_volum_embassat,
+                                    item.volum_embassat
                             )) },
                                 shape = RectangleShape
                                 ) {
-                                Text(estat.estaci)
+                                Text(item.estaci)
                             }
                         }
                     }
@@ -114,11 +112,12 @@ fun EstatScreen1(navScreen2: (List<String>)-> Unit) {
 }
 
 @Composable
-fun EstatScreen2(strings: List<String>, navScreen1: ()-> Unit) {
+fun EmbassamentsScreen2(strings: List<String>, navScreen1: ()-> Unit) {
     Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(strings[1], fontSize = 20.sp)
+        Spacer(Modifier.height(25.dp))
         Column(Modifier.width(300.dp), horizontalAlignment = Alignment.Start) {
             Text("Dia: ${strings[0]}")
-            Text("Estaci: ${strings[1]}")
             Text("Nivell Absolut: ${strings[2]}")
             Text("Percentatge de Volum Embassat: ${strings[3]}")
             Text("Volum Embassat: ${strings[4]}")
@@ -132,23 +131,23 @@ fun EstatScreen2(strings: List<String>, navScreen1: ()-> Unit) {
 
 object Destination {
     @Serializable
-    data object EstatScreen1
+    data object EmbassamentsScreen1
     @Serializable
-    data class EstatScreen2(val strings: List<String>)
+    data class EmbassamentsScreen2(val strings: List<String>)
 }
 
 @Composable
-fun EstatNavigation() {
+fun EmbassamentsNavigation() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Destination.EstatScreen1) {
-        composable<Destination.EstatScreen1> {
-            EstatScreen1 { navController.navigate(Destination.EstatScreen2(it)) }
+    NavHost(navController = navController, startDestination = Destination.EmbassamentsScreen1) {
+        composable<Destination.EmbassamentsScreen1> {
+            EmbassamentsScreen1 { navController.navigate(Destination.EmbassamentsScreen2(it)) }
         }
-        composable<Destination.EstatScreen2> { backStack ->
-            val strings = backStack.toRoute<Destination.EstatScreen2>().strings
-            EstatScreen2(
+        composable<Destination.EmbassamentsScreen2> { backStack ->
+            val strings = backStack.toRoute<Destination.EmbassamentsScreen2>().strings
+            EmbassamentsScreen2(
                 strings,
-                navScreen1 = { navController.navigate(Destination.EstatScreen1) }
+                navScreen1 = { navController.navigate(Destination.EmbassamentsScreen1) }
             )
         }
     }
