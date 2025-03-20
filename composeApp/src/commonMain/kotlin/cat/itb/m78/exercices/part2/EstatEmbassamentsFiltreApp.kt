@@ -59,7 +59,9 @@ object EmbassamentsFiltreApi {
             })
         }
     }
-    suspend fun listEmbassaments(estaci: String?) = if (estaci == null) client.get(url).body<List<Embassament>>() else client.get("$url?estaci=${estaci.replace(" ", "%20")}").body<List<Embassament>>()
+    suspend fun listEmbassaments(estaci: String?) = client.get(
+        if (estaci == null) url else "$url?estaci=${estaci.replace(" ", "%20")}"
+    ).body<List<Embassament>>()
 }
 
 @Composable
